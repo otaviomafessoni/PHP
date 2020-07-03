@@ -1,0 +1,13 @@
+{
+    "name": "otavio/php",
+    "authors": [
+        {
+            "name": "Otavio",
+            "email": "otavio@xpert.com.br"
+        }
+    ],
+    "require": {
+        "slim/slim": "~2",
+        "emalherbi/mymysql": "^1.0"
+    }
+}
