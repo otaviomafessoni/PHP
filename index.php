@@ -1,8 +1,5 @@
 <?php
 
-echo phpInfo();
-die();
-
 require_once 'routes.php';
 
 \Slim\Slim::registerAutoloader();

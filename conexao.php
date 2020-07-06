@@ -1,27 +1,29 @@
 <?php
 
-//require ('../routes.php');
+require ('../routes.php');
+
+header("Content-type: text/html; charset=iso-8859-1", true);
+
 class Conexao
 {
-    private $connection;
-    private $result;    
-	
-    public function __construct(){
+    private $conexao;
 
-        $this->getConnection();
+    public function __construct(){    
+        //Lê o arquivo INI dentro da pasta "Config"
+        $db = parse_ini_file(CONFIG.DS.'sqlserver.ini');
+
+        //Cria a string de conexão com os parametros do INI
+        $info = array('Database' => $db['DB_NAME'], 'UID' => $db['DB_USER'], 'PWD' =>  $db['DB_PASS']);  
+
+        //Faz a conexão
+        return $this->conexao = sqlsrv_connect($db['DB_HOST'], $info);
     }
+    
+    public function query($sql) {      
+       //Executa o comando SQL enviado pelo paramentro
 
-    public function getConnection() {    
+       $result = sqlsrv_query($this->conexao,$sql);       
+       return $result;
 
-        $info = array('Database' => DB_NAME, 'UID' => DB_USER, 'PWD' =>  DB_PASSWORD);        
-        $this->connection = @sqlsrv_connect($hostname, $info);
-     }
-
-    public function query($sql) {        
-        return $this->result = mssql_query($sql) or die('DETALHES DO ERRO: '.mssql_get_last_message());
-    }
-	
-	public function getConexao(){
-		return $this->connection;
-	}    
+    } 
 }
