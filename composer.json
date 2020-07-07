@@ -2,12 +2,11 @@
     "name": "otavio/php",
     "authors": [
         {
-            "name": "Otavio",
-            "email": "otavio@xpert.com.br"
+            "name": "Otavio Mafessoni",
+            "email": "omafessoni@hotmail.com"
         }
     ],
     "require": {
-        "slim/slim": "~2",
-        "emalherbi/mymysql": "^1.0"
+        "slim/slim": "~2"
     }
 }

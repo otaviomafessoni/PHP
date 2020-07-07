@@ -12,7 +12,7 @@ require_once VENDOR.DS.'autoload.php';
 
 date_default_timezone_set('America/Sao_Paulo');
 
-$db = parse_ini_file(CONFIG.DS.'application.ini');
+/*$db = parse_ini_file(CONFIG.DS.'application.ini');
 $mysql = new MyMysql\MyMysql(array(
     'DB_LOG' => $db['DB_LOG'],
     'DB_HOST' => $db['DB_HOST'],
@@ -20,4 +20,4 @@ $mysql = new MyMysql\MyMysql(array(
     'DB_USER' => $db['DB_USER'],
     'DB_PASS' => $db['DB_PASS'],
 ), LOGS);
-    
+*/

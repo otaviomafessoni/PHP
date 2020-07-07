@@ -21,8 +21,8 @@ class Conexao
     
     public function query($sql) {      
        //Executa o comando SQL enviado pelo paramentro
-
-       $result = sqlsrv_query($this->conexao,$sql);       
+       
+       $result = sqlsrv_query($this->conexao,$sql);              
        return $result;
 
     } 
