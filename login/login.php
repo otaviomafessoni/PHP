@@ -53,7 +53,7 @@ require_once "../conexao.php"
 </body>    
 <?php        
 
-try{    
+try{            
     $usuario = $_POST['username']; 
     $senha = $_POST['password'];
 
@@ -73,7 +73,7 @@ try{
         if ($result != "") {
             $message = "Olá, Seja bem vindo ".$result;
             echo "<script type='text/javascript'>alert('$message');</script>";     
-                          
+
         }
         else {            
             $message = "Usuário inválido!";
