@@ -50,55 +50,38 @@ require_once "../conexao.php"
         </div>
         </form>
     </div>
+</body>    
 <?php        
-    
+
+try{    
     $usuario = $_POST['username']; 
     $senha = $_POST['password'];
 
     if (($usuario != "") && ($senha != "")) {
+        
+        $sql = '';
+        $sql .= ('SELECT ID_OPERADORES, NOME, SENHA FROM OPERADORES'
+                . " WHERE NOME = '$usuario' AND SENHA = '$senha'") or die("erro ao selecionar");
 
         $conexao = new Conexao();
-
-        $sql = '';
-        $sql .= 'SELECT ID_OPERADORES, NOME, SENHA FROM OPERADORES';
-        $sql .= " WHERE NOME = ".($usuario)." AND SENHA = ".($senha);
-
-        $valida = $conexao->query($sql);
-
+        $valida = $conexao->query($sql);      
+        $result = '';
         while($row = sqlsrv_fetch_object($valida)){   
-            echo $row->NOME;
-        }
-        
-        die();
-
-        if ($row > 0) {
-            $message = "Acessou o sistema, parabens!";
-            echo "<script type='text/javascript'>alert('$message');</script>";
-            die();
+            $result=$row->NOME;
         }
     
-        if ($usuario === "48") {
-            if ($senha === "O") {
-                $message = "Acessou o sistema, parabens!";
-                echo "<script type='text/javascript'>alert('$message');</script>";
-                die();
-            }
-            else{
-                $message = "Senha inválida!";
-                echo "<script type='text/javascript'>alert('$message');</script>";
-                die();
-            }
+        if ($result != "") {
+            $message = "Olá, Seja bem vindo ".$result;
+            echo "<script type='text/javascript'>alert('$message');</script>";     
+                          
         }
-        else {
+        else {            
             $message = "Usuário inválido!";
-            echo "<script type='text/javascript'>alert('$message');</script>";
-            die();
+            echo "<script type='text/javascript'>alert('$message');</script>";            
         }
     }        
-?>
-</body>
-
-<?php
-
-
+}catch(Exception $e){     
+    echo $e->getMessage();
+  exit; 
+}        
 ?>
