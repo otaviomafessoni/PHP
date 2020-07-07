@@ -66,6 +66,7 @@ try{
         $conexao = new Conexao();
         $valida = $conexao->query($sql);      
         $result = '';
+        
         while($row = sqlsrv_fetch_object($valida)){   
             $result=$row->NOME;
         }
