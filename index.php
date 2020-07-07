@@ -4,6 +4,8 @@ require_once 'routes.php';
 
 \Slim\Slim::registerAutoloader();
 
+$logado = false;
+
 $app = new \Slim\Slim();
 
 $app->get('/', function () {

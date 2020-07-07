@@ -2,9 +2,18 @@
 
 header("Content-type: text/html; charset=UTF-8", true);//iso-8859-1
 
+require_once "../index.php";
 require_once "../conexao.php";
 
 try{
+  
+      if ($logado==false){
+            $message = "Você não tem permissão para acessar!";
+            echo "<script type='text/javascript'>alert('$message');</script>";              
+            header('Location: ../login/login.php');
+            die();
+      }
+      
       //echo (phpInfo());
       //die();
             

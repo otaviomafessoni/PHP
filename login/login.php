@@ -54,8 +54,14 @@ require_once "../conexao.php"
 <?php        
 
 try{            
-    $usuario = $_POST['username']; 
-    $senha = $_POST['password'];
+    if (isset($_POST['username'])){
+        $usuario = $_POST['username']; 
+        $senha = $_POST['password'];
+    }
+    else {
+        $usuario = '';
+        $senha = '';
+    }
 
     if (($usuario != "") && ($senha != "")) {
         
@@ -66,17 +72,19 @@ try{
         $conexao = new Conexao();
         $valida = $conexao->query($sql);      
         $result = '';
-        
+
         while($row = sqlsrv_fetch_object($valida)){   
             $result=$row->NOME;
         }
-    
-        if ($result != "") {
-            $message = "Olá, Seja bem vindo ".$result;
-            echo "<script type='text/javascript'>alert('$message');</script>";     
 
+        if ($result != "") {
+            $logado = true;                        
+            $message = "Olá, Seja bem vindo ".$result;            
+            echo "<script type='text/javascript'>alert('$message');</script>";     
+            //header('Location: ../clientes/clientes.php');            
         }
-        else {            
+        else {  
+            $logado = false;  
             $message = "Usuário inválido!";
             echo "<script type='text/javascript'>alert('$message');</script>";            
         }
