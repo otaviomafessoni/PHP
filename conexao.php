@@ -2,7 +2,7 @@
 
 require ('../routes.php');
 
-header("Content-type: text/html; charset=iso-8859-1", true);
+//header("Content-type: text/html; charset=iso-8859-1", true);
 
 class Conexao
 {

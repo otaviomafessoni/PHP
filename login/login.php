@@ -1,7 +1,7 @@
 <?php
 
 //require_once "../routes.php";
-require_once "../conexao.php"
+require_once "../conexao.php";
 ?>
 
 
@@ -26,7 +26,7 @@ require_once "../conexao.php"
                         <form id="login-form" class="form" action="" method="post">
                             <h1 class="text-center text-info">Login</h1>
                             <div class="form-group">
-                                <label for="username" class="text-info">Usuário:</label><br>
+                                <label for="username" class="text-info">Usuario:</label><br>
                                 <input type="text" name="username" id="username" class="form-control">
                             </div>
                             <div class="form-group">
@@ -57,8 +57,7 @@ try{
     if (isset($_POST['username'])){
         $usuario = $_POST['username']; 
         $senha = $_POST['password'];
-    }
-    else {
+    } else {
         $usuario = '';
         $senha = '';
     }
@@ -78,14 +77,14 @@ try{
         }
 
         if ($result != "") {
-            $logado = true;                        
-            $message = "Olá, Seja bem vindo ".$result;            
-            echo "<script type='text/javascript'>alert('$message');</script>";     
-            //header('Location: ../clientes/clientes.php');            
-        }
-        else {  
+            $logado = true;      
+            
+
+            header('Location: ../main/index.php');  
+
+        } else {  
             $logado = false;  
-            $message = "Usuário inválido!";
+            $message = "Usuario invalido!";
             echo "<script type='text/javascript'>alert('$message');</script>";            
         }
     }        
